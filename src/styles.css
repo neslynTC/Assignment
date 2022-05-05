@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --red-color: #c02332;
+}
+
+.min-width {
+    min-width: 344px !important;;
+}
+
+.margin-top {
+    margin-top: 10px !important;
+}
+
+.red-bg {
+    background-color: var(--red-color) !important;
+}
+
+.white-font {
+    color: #fff !important;
+}
+
+body {
+    background-color: #f7f6f6;
+}
+
+.btn-round {
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.count {
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: default;
+    margin: 0px 10px;
+}
