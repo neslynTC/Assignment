@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [CartComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

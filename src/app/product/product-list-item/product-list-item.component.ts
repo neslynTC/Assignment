@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/cart/cart.service';
 import { Product } from 'src/app/shared/product.model';
 
@@ -8,7 +9,7 @@ import { Product } from 'src/app/shared/product.model';
   styleUrls: ['./product-list-item.component.css']
 })
 export class ProductListItemComponent implements OnInit {
-  count: number
+  // count: number
   id: number
   img: string
   title: string
@@ -16,34 +17,13 @@ export class ProductListItemComponent implements OnInit {
   weight: string
   price: number
   @Input() product: Product
-  constructor(private cartService: CartService) { 
+  constructor(private cartService: CartService, private router: Router) { 
   }
 
   ngOnInit() {
-    this.id = this.product.id
-    this.img = this.product.img
-    this.title = this.product.title
-    this.description = this.product.description
-    this.weight = this.product.weight
-    this.price = this.product.price
-    this.count = this.product.count
   }
-
-  onAddItem = () => {
-    this.count += 1
-    this.product.count = this.count
-    this.cartService.addItemToCart(this.product)
-    return this.count
+  
+  goToProductPage = () => {
+    this.router.navigate([this.product.id])
   }
-
-  onRemoveItem = () => {
-    if (this.count > 0)
-      this.count -= 1
-    else
-      this.count = 0
-    this.product.count = this.count
-    this.cartService.removeItemFromCart(this.product)
-    return this.count
-  }
-
 }

@@ -29,19 +29,4 @@ export class CartComponent implements OnInit {
     })
     this.cartEmpty = this.cartList.length > 0 ? false : true
   }
-
-  onRemoveItem = (product) => {
-    if (product.count > 0){
-      product.count -= 1
-    }
-    this.cartService.removeItemFromCart(product)
-    this.updateCart()
-  }
-
-  onAddItem = (product) => {
-    product.count += 1
-    this.cartService.addItemToCart(product)
-    this.updateCart()
-  }
-
 }

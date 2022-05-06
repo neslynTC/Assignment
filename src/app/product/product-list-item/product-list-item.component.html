@@ -1,27 +1,20 @@
 <div class="card shadow p-3 mb-5 bg-body rounded">
-  <img src="{{img}}" class="card-img-top" alt="{{title}} image">
+  <img src="{{product.img}}" class="card-img-top img-clickable" alt="{{product.title}} image" (click)="goToProductPage()">
   <div class="card-body">
-    <p class="card-title">{{title}}</p>
-    <p>{{description}}</p>
+    <p class="card-title">{{product.title}}</p>
+    <p>{{product.description}}</p>
     <div class="weight-card">
         <span class="weight-card-font-bold weight-card-font-size">Weight:</span>
-        <span class="weight-card-font-size">{{weight}}</span>
+        <span class="weight-card-font-size">{{product.weight}}</span>
     </div>
     
     <div class="row d-flex justify-content-between">
       <div class="col-6 d-flex align-items-center cost">
-        ₹{{price}}
+        ₹{{product.price}}
       </div>
       <div class="col-6 d-flex justify-content-end">
-        <button class="btn red-bg white-font" *ngIf="count == 0" (click) = "onAddItem()">Add to cart</button>
-        <span *ngIf = "count > 0" class="d-flex justify-content-between align-items-center" >
-          <button class="btn btn-round red-bg white-font" (click)="onRemoveItem()">-</button>
-            <span class="count">{{count}}</span>
-          <button class="btn btn-round red-bg white-font" (click)="onAddItem()">+</button>
-          <!-- <app-cart-buttons [product]="product"></app-cart-buttons> -->
-        </span>
+          <app-cart-buttons [product]="product"></app-cart-buttons>
       </div>
-        
     </div>
   </div>
 </div>

@@ -14,9 +14,10 @@
                                 <p>{{cartItem.title}}</p>
                                 <p>₹{{cartItem.count*cartItem.price}}</p>
                                 <div class="d-flex align-items-center button-container">
-                                    <button class="btn btn-round red-bg white-font" (click)="onRemoveItem(cartItem)">-</button>
+                                    <!-- <button class="btn btn-round red-bg white-font" (click)="onRemoveItem(cartItem)">-</button>
                                         <span class="count">{{cartItem.count}}</span>
-                                    <button class="btn btn-round red-bg white-font" (click)="onAddItem(cartItem)">+</button>
+                                    <button class="btn btn-round red-bg white-font" (click)="onAddItem(cartItem)">+</button> -->
+                                    <app-cart-buttons [product]="cartItem"></app-cart-buttons>
                                 </div>
                             </div>
                         </div>

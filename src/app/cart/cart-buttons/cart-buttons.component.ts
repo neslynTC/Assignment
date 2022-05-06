@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/product.model';
+import { CartComponent } from '../cart.component';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { CartService } from '../cart.service';
 })
 export class CartButtonsComponent implements OnInit {
   @Input() product: Product;
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private cartComponent: CartComponent) { }
 
   ngOnInit() {
   }
@@ -17,6 +18,7 @@ export class CartButtonsComponent implements OnInit {
   onAddItem() {
     this.product.count += 1
     this.cartService.addItemToCart(this.product)
+    this.cartComponent.updateCart()
     return this.product.count
   }
 
@@ -25,8 +27,8 @@ export class CartButtonsComponent implements OnInit {
       this.product.count -= 1
     else
       this.product.count = 0
-    this.product.count = this.product.count
     this.cartService.removeItemFromCart(this.product)
+    this.cartComponent.updateCart()
     return this.product.count
   }
 

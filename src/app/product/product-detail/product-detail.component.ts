@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/shared/product.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
+  id: number
+  product: Product
+  productFound: boolean
+  constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit () {
+    this.id = this.route.snapshot.params['id']
+    this.product = this.productService.getProduct(this.id)
+    if (this.product){
+      this.productFound = true
+    } else {
+      this.productFound = false
+    }
   }
 
 }
