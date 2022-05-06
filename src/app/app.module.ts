@@ -17,7 +17,8 @@ const appRoutes: Routes = [
   {path: "", component: ProductsListComponent},
   {path: "cart", component: CartComponent},
   {path: ":id", component: ProductDetailComponent},
-  {path: "**", pathMatch: "full", component: PageNotFoundComponent}
+  {path: "404/not-found",  component: PageNotFoundComponent},
+  {path: "**", pathMatch: "full", redirectTo: "404/not-found"}
 ]
 @NgModule({
   declarations: [
