@@ -3,6 +3,11 @@
     --red-color: #c02332;
 }
 
+.main-page {
+    min-height: 100vh !important;
+    position: relative;
+}
+
 .min-width {
     min-width: 344px !important;;
 }

@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { HttpClientModule } from '@angular/common/http'
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { CartButtonsComponent } from './cart/cart-buttons/cart-buttons.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 const appRoutes: Routes = [
   {path: "", component: ProductsListComponent},
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     ProductDetailComponent,
     PageNotFoundComponent,
     CartButtonsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

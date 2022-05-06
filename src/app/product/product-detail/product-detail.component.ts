@@ -11,18 +11,16 @@ import { ProductService } from '../product.service';
 export class ProductDetailComponent implements OnInit {
   id: number
   product: Product
-  productFound: boolean
   constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService) { }
 
-  ngOnInit () {
+  ngOnInit() {
+    this.getDetails()
+  }
+
+  getDetails = async () => {
     this.id = this.route.snapshot.params['id']
+    const a = await this.productService.getProducts()
     this.product = this.productService.getProduct(this.id)
-    if (this.product){
-      this.productFound = true
-    } else {
-      this.productFound = false
-      this.router.navigate(["/404/ProductNotFound"])
-    }
   }
 
 }
