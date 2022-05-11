@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Output } from '@angular/core';
 import { Product } from '../shared/product.model';
+import { Store } from '@ngrx/store';
+import { Products } from './product.state';
+import { ActionSetProducts } from './product.action';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  products$: Observable<Product[]>;
   products: Product[] = [];
   product: Product;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,  private store: Store<Products>) { }
 
   getProduct = (id) => {
     return this.products.find(product => product.id == Number(id))
@@ -29,6 +34,7 @@ export class ProductService {
         }
       }
     }
+    this.store.dispatch(new ActionSetProducts(this.products))
     return this.products
   }
 }

@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { CartButtonsComponent } from './cart/cart-buttons/cart-buttons.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { StoreModule } from '@ngrx/store'
+import { ProductsReducer } from './product/product.reducer';
 
 const appRoutes: Routes = [
   {path: "", component: ProductsListComponent},
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({products: ProductsReducer})
   ],
   providers: [CartComponent],
   bootstrap: [AppComponent]

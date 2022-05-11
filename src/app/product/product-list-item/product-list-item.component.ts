@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { CartService } from 'src/app/cart/cart.service';
 import { Product } from 'src/app/shared/product.model';
+import { Products } from '../product.state';
 
 @Component({
   selector: 'app-product-list-item',
@@ -17,7 +19,7 @@ export class ProductListItemComponent implements OnInit {
   weight: string
   price: number
   @Input() product: Product
-  constructor(private cartService: CartService, private router: Router) { 
+  constructor(private cartService: CartService, private router: Router, private store: Store<Products>) { 
   }
 
   ngOnInit() {

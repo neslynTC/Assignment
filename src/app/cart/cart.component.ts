@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Products } from '../product/product.state';
 import { Product } from '../shared/product.model';
 import { CartService } from './cart.service';
 
@@ -12,7 +15,8 @@ export class CartComponent implements OnInit {
   cartEmpty: boolean
   cartList: Product[] = []
   total: number
-  constructor(private cartService: CartService) { }
+  products$: Observable<Product[]>
+  constructor(private cartService: CartService, private productStore: Store<Products>) { }
 
   ngOnInit() {
     this.updateCart()
